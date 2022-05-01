@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStyles } from "./styles";
 import {
   AppBar,
@@ -12,15 +12,28 @@ import {
   FormControlLabel,
   FormGroup,
 } from "@material-ui/core";
-import { AccountCircle, BarChart } from "@material-ui/icons";
+import { AccountCircle, BarChart, CloseOutlined } from "@material-ui/icons";
+
 const Navbar: React.FC = () => {
   const classes = useStyles();
   const [auth, setauth] = useState(true);
+  const [shownav, setshownav] = useState<boolean>(false);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setauth(event.target.checked);
   };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Box
+        className={classes.navmenu}
+        style={{
+          transform: shownav ? "translateX(0)" : "translateX(-100%)",
+        }}
+      >
+        <Box onClick={() => setshownav(!shownav)} className={classes.close}>
+          <CloseOutlined />
+        </Box>
+      </Box>
       <FormGroup>
         <FormControlLabel
           control={
@@ -36,7 +49,7 @@ const Navbar: React.FC = () => {
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <Box className={classes.navleft}>
-            <IconButton>
+            <IconButton onClick={() => setshownav(!shownav)}>
               <BarChart className={classes.icon} />
             </IconButton>
             <Typography variant="h6" component="div">

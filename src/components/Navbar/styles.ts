@@ -12,4 +12,17 @@ export const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
+  navmenu: {
+    height: "100vh",
+    width: "50vw",
+    background: "white",
+    position: "fixed",
+    zIndex: 1,
+    top: "0",
+    left: "0",
+    transition: "all 0.3s linear",
+  },
+  close: {
+    cursor: "pointer",
+  },
 });

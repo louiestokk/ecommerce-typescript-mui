@@ -7,7 +7,7 @@ import {
   CardMedia,
   CardContent,
 } from "@material-ui/core";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type Images = {
   id: string;
@@ -31,7 +31,7 @@ type Props = {
 const Productdetails: React.FC<Props> = ({ products }) => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const { id } = useParams();
+
   return (
     <Grid item>
       <Card
